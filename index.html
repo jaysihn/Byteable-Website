@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Byteable — Simple macro tracking & meal planning</title>
+  <meta name="description" content="Byteable helps you track macros, plan meals, and stay consistent—without the clutter." />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #12131a;
+      --text: #e8e8ef;
+      --muted: #b6b7c2;
+      --accent: #7c5cff;
+      --accent2:#2fe6a6;
+      --border: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,.25), transparent 55%),
+                  radial-gradient(900px 600px at 90% 15%, rgba(47,230,166,.18), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 18px 56px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;}
+    .logo {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(124,92,255,.25);
+    }
+    nav { display:flex; gap: 14px; color: var(--muted); font-size: 14px; }
+    nav a:hover { color: var(--text); }
+    .hero { margin-top: 54px; display:grid; grid-template-columns: 1.2fr .8fr; gap: 22px; align-items: start; }
+    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+    .h1 { font-size: 44px; line-height: 1.1; margin: 0 0 14px; }
+    .sub { color: var(--muted); font-size: 18px; margin: 0 0 22px; max-width: 60ch; }
+    .ctaRow { display:flex; gap: 12px; flex-wrap: wrap; align-items:center; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px; border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      font-weight: 600;
+    }
+    .btn.primary {
+      border: 1px solid rgba(124,92,255,.45);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(47,230,166,.85));
+      color: #0b0c10;
+    }
+    .btn:hover { transform: translateY(-1px); transition: .12s ease; }
+    .note { color: var(--muted); font-size: 13px; margin-top: 10px; }
+    .card {
+      background: rgba(18,19,26,.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .grid { margin-top: 26px; display:grid; grid-template-columns: repeat(3,1fr); gap: 14px;}
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .divider { margin: 34px 0; height: 1px; background: var(--border); }
+    footer { margin-top: 26px; color: var(--muted); font-size: 13px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+    .links { display:flex; gap:12px; flex-wrap:wrap; }
+    .pill {
+      display:inline-flex; gap:8px; align-items:center;
+      padding: 10px 12px; border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.18);
+      color: var(--muted);
+    }
+    .mock {
+      height: 340px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        radial-gradient(900px 240px at 35% 10%, rgba(124,92,255,.25), transparent 55%),
+        radial-gradient(700px 240px at 70% 30%, rgba(47,230,166,.18), transparent 60%),
+        rgba(18,19,26,.65);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(232,232,239,.7);
+      font-weight: 650;
+      letter-spacing:.3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Byteable</div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="h1">Macros, meals, and progress—made simple.</h1>
+        <p class="sub">
+          Byteable helps you track calories and macros, plan meals, and build consistency with a clean, fast experience.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="support.html">Get updates / Contact</a>
+          <a class="btn" href="#features">See features</a>
+        </div>
+        <div class="note">Coming soon on iOS + Android. No spam—just launch updates.</div>
+
+        <div class="divider"></div>
+
+        <div class="ctaRow">
+          <span class="pill">✅ Simple daily logging</span>
+          <span class="pill">🍽️ Meal planning</span>
+          <span class="pill">📊 Macro targets</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="mock">Add screenshot later</div>
+        <div style="height: 12px;"></div>
+        <h3>Built for real life</h3>
+        <p>
+          Quick add, recipes, and clean visual macro feedback—so logging stays easy even on busy days.
+        </p>
+      </div>
+    </section>
+
+    <section id="features" class="grid">
+      <div class="card">
+        <h3>Track what matters</h3>
+        <p>Calories + macro breakdown with simple, consistent visuals.</p>
+      </div>
+      <div class="card">
+        <h3>Plan ahead</h3>
+        <p>Use a lightweight meal planner to reduce decision fatigue.</p>
+      </div>
+      <div class="card">
+        <h3>Recipes + foods</h3>
+        <p>Create foods and recipes so your favorites are always one tap away.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <footer>
+      <div>© <span id="y"></span> Byteable</div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
