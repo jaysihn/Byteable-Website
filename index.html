@@ -3,42 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Byteable — Simple macro tracking & meal planning</title>
-  <meta name="description" content="Byteable helps you track macros, plan meals, and stay consistent—without the clutter." />
+  <title>Byteable &mdash; Macro tracking, AI pattern insights, and meal planning</title>
+  <meta name="description" content="Byteable makes macro tracking effortless, lets you add foods by snapping a nutrition label, and uses AI to reveal patterns between symptoms, foods, and weight trends." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0c10;
-      --card: #12131a;
-      --text: #e8e8ef;
-      --muted: #b6b7c2;
+      --bg: #07080d;
+      --card: #0e1018;
+      --text: #e7e8ef;
+      --muted: #b8bbc9;
       --accent: #7c5cff;
-      --accent2:#2fe6a6;
+      --accent2: #2fe6a6;
       --border: rgba(255,255,255,.10);
+      --highlight: #ffd166;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,.25), transparent 55%),
-                  radial-gradient(900px 600px at 90% 15%, rgba(47,230,166,.18), transparent 60%),
-                  var(--bg);
+      font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 620px at 22% 0%, rgba(124,92,255,.22), transparent 55%),
+        radial-gradient(900px 620px at 88% 10%, rgba(47,230,166,.18), transparent 60%),
+        var(--bg);
       color: var(--text);
       line-height: 1.5;
     }
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 18px 56px; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 18px 64px; }
     header { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;}
-    .logo {
-      width: 36px; height: 36px; border-radius: 10px;
+    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px; }
+    .brand-logo {
+      width: 42px; height: 42px; border-radius: 12px;
+      overflow: hidden;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 10px 30px rgba(124,92,255,.25);
+      display:flex; align-items:center; justify-content:center;
     }
-    nav { display:flex; gap: 14px; color: var(--muted); font-size: 14px; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; display:block; }
+    nav { display:flex; gap: 14px; color: var(--muted); font-size: 14px; flex-wrap: wrap; }
     nav a:hover { color: var(--text); }
-    .hero { margin-top: 54px; display:grid; grid-template-columns: 1.2fr .8fr; gap: 22px; align-items: start; }
-    @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
-    .h1 { font-size: 44px; line-height: 1.1; margin: 0 0 14px; }
+    .hero { margin-top: 54px; display:grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; }
+    @media (max-width: 920px) { .hero { grid-template-columns: 1fr; } }
+    .h1 { font-size: 44px; line-height: 1.05; margin: 10px 0 14px; letter-spacing:-0.5px; }
     .sub { color: var(--muted); font-size: 18px; margin: 0 0 22px; max-width: 60ch; }
     .ctaRow { display:flex; gap: 12px; flex-wrap: wrap; align-items:center; }
     .btn {
@@ -47,27 +55,28 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.04);
       font-weight: 600;
+      color: var(--text);
     }
     .btn.primary {
       border: 1px solid rgba(124,92,255,.45);
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(47,230,166,.85));
-      color: #0b0c10;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(47,230,166,.88));
+      color: #08070c;
     }
     .btn:hover { transform: translateY(-1px); transition: .12s ease; }
     .note { color: var(--muted); font-size: 13px; margin-top: 10px; }
     .card {
-      background: rgba(18,19,26,.72);
+      background: rgba(14,16,24,.78);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 18px;
       backdrop-filter: blur(10px);
     }
-    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
     .card p { margin: 0; color: var(--muted); font-size: 14px; }
-    .grid { margin-top: 26px; display:grid; grid-template-columns: repeat(3,1fr); gap: 14px;}
-    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .grid { margin-top: 18px; display:grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    @media (max-width: 920px) { .grid { grid-template-columns: 1fr; } }
     .divider { margin: 34px 0; height: 1px; background: var(--border); }
-    footer { margin-top: 26px; color: var(--muted); font-size: 13px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+    footer { margin-top: 26px; color: var(--muted); font-size: 13px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
     .links { display:flex; gap:12px; flex-wrap:wrap; }
     .pill {
       display:inline-flex; gap:8px; align-items:center;
@@ -88,18 +97,48 @@
       color: rgba(232,232,239,.7);
       font-weight: 650;
       letter-spacing:.3px;
+      text-align:center;
     }
+    .feature-list { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 14px; }
+    @media (max-width: 640px) { .feature-list { grid-template-columns: 1fr; } }
+    .feature-item { display:flex; gap:10px; align-items:flex-start; color: var(--text); font-size: 15px; }
+    .feature-dot { width:10px; height:10px; margin-top:6px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 0 0 4px rgba(124,92,255,.14); }
+    .ribbon { display:inline-flex; align-items:center; gap:8px; background: rgba(255,255,255,.06); border:1px solid var(--border); border-radius: 999px; padding: 8px 12px; color: var(--muted); font-size: 13px; }
+    .ribbon strong { color: var(--text); }
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 32px 0 14px; }
+    .section-head h2 { margin:0; font-size: 22px; }
+    .section-head p { margin:0; color: var(--muted); font-size: 14px; }
+    .insights { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    @media (max-width: 920px) { .insights { grid-template-columns: 1fr; } }
+    .insight { padding: 18px; border-radius: 16px; border: 1px solid var(--border); background: linear-gradient(135deg, rgba(255,209,102,.08), rgba(124,92,255,.06)); }
+    .insight h3 { margin:0 0 8px; font-size: 17px; }
+    .insight p { margin:0 0 12px; color: var(--muted); }
+    .badge { display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:6px 8px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:var(--muted); }
+    .badge span { color: var(--highlight); font-weight:700; letter-spacing:.2px; }
+    .soon-pill {
+      display:inline-flex; align-items:center; gap:4px;
+      padding:4px 8px; border-radius:10px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color: var(--highlight); font-size:11px; letter-spacing:.4px; text-transform:uppercase;
+    }
+    .soon-link { display:inline-flex; align-items:center; gap:6px; }
+    .soon-link[aria-disabled="true"] { pointer-events:none; opacity:.7; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-logo" aria-hidden="true">
+          <img src="logo.png" alt="Byteable logo" loading="lazy" />
+        </div>
         <div>Byteable</div>
       </div>
       <nav>
         <a href="#features">Features</a>
+        <a href="#patterns">AI patterns</a>
+        <a class="soon-link" href="https://app.byteable.com" aria-disabled="true">Web app <span class="soon-pill">coming soon</span></a>
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy</a>
       </nav>
@@ -107,56 +146,106 @@
 
     <section class="hero">
       <div>
-        <h1 class="h1">Macros, meals, and progress—made simple.</h1>
+        <div class="ribbon"><span>New</span> <strong>AI-powered pattern insights</strong></div>
+        <h1 class="h1">Track macros. Spot patterns. Feel better.</h1>
         <p class="sub">
-          Byteable helps you track calories and macros, plan meals, and build consistency with a clean, fast experience.
+          Byteable helps you track calories and macros, plan meals, and discover patterns between what you eat and how you feel &mdash; with a clean, fast experience.
         </p>
 
         <div class="ctaRow">
           <a class="btn primary" href="support.html">Get updates / Contact</a>
           <a class="btn" href="#features">See features</a>
+          <a class="btn soon-link" href="https://app.byteable.com" aria-disabled="true">
+            Open web app <span class="soon-pill">coming soon</span>
+          </a>
         </div>
-        <div class="note">Coming soon on iOS + Android. No spam—just launch updates.</div>
+        <div class="note">Coming soon on iOS + Android. Web app link will go live at launch. No spam &mdash; just launch updates.</div>
 
         <div class="divider"></div>
 
         <div class="ctaRow">
-          <span class="pill">✅ Simple daily logging</span>
-          <span class="pill">🍽️ Meal planning</span>
-          <span class="pill">📊 Macro targets</span>
+          <span class="pill">&#128247; Snap a nutrition label</span>
+          <span class="pill">&#10024; AI pattern insights</span>
+          <span class="pill">&#128200; Macro + weight trends</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="mock">Add screenshot later</div>
+        <div class="mock">App preview coming soon</div>
         <div style="height: 12px;"></div>
         <h3>Built for real life</h3>
         <p>
-          Quick add, recipes, and clean visual macro feedback—so logging stays easy even on busy days.
+          Quick add, recipes, and clean visual macro feedback &mdash; so logging stays easy even on busy days.
         </p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>Take a picture of a nutrition label to instantly add a food to your library.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>Connect symptoms, foods, and drinks to surface patterns you would otherwise miss.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>See how macro targets align with weight trends to keep adjustments data-driven.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>Plan meals ahead to reduce decision fatigue while staying on target.</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="features" class="grid">
+    <div class="section-head" id="features">
+      <h2>What makes Byteable different</h2>
+      <p>Capture foods fast, then let AI surface the patterns that matter.</p>
+    </div>
+
+    <section class="grid">
       <div class="card">
-        <h3>Track what matters</h3>
-        <p>Calories + macro breakdown with simple, consistent visuals.</p>
+        <h3>Snap a label, save a food</h3>
+        <p>Photograph a nutrition label to auto-fill calories, macros, and serving sizes &mdash; no manual entry.</p>
       </div>
       <div class="card">
-        <h3>Plan ahead</h3>
-        <p>Use a lightweight meal planner to reduce decision fatigue.</p>
+        <h3>AI pattern intelligence</h3>
+        <p>Recognize links between symptoms and what you eat or drink so you can pinpoint triggers.</p>
       </div>
       <div class="card">
-        <h3>Recipes + foods</h3>
-        <p>Create foods and recipes so your favorites are always one tap away.</p>
+        <h3>Weight &times; macro feedback</h3>
+        <p>See how your macro targets map to weight trends, helping you adjust with confidence.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <div class="section-head" id="patterns">
+      <h2>Spot the signals</h2>
+      <p>Built-in AI helps you act on what the data is telling you.</p>
+    </div>
+
+    <section class="insights">
+      <div class="insight">
+        <div class="badge"><span>Symptoms</span> vs foods/drinks</div>
+        <h3>Surface triggers sooner</h3>
+        <p>Log symptoms as they happen, then see which meals or ingredients show up the most before a flare-up.</p>
+        <p class="note">Use Byteable as your food journal and health diary &mdash; without extra spreadsheets.</p>
+      </div>
+      <div class="insight">
+        <div class="badge"><span>Weight</span> vs macros</div>
+        <h3>Course-correct with clarity</h3>
+        <p>Overlay macro targets with weight changes to understand when to adjust protein, carbs, or calories.</p>
+        <p class="note">Keep progress moving with small, data-backed tweaks instead of guesswork.</p>
       </div>
     </section>
 
     <div class="divider"></div>
 
     <footer>
-      <div>© <span id="y"></span> Byteable</div>
+      <div>&copy; <span id="y"></span> Byteable</div>
       <div class="links">
+        <a class="soon-link" href="https://app.byteable.com" aria-disabled="true">Web app <span class="soon-pill">coming soon</span></a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms</a>
         <a href="support.html">Support</a>
